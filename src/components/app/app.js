@@ -1,12 +1,14 @@
 import React from "react";
 import "./app.css";
-import {WithRfapiService} from "../hoc";
+import {Route, Switch} from "react-router-dom";
+import {ArticlesPage} from "../pages";
 
-const App = ({rfapiService}) => {
-  console.log(rfapiService.getArticles());
+const App = () => {
   return (
-    <div>App</div>
+    <Switch>
+      <Route path="/" component={ArticlesPage} />
+    </Switch>
   )
 };
 
-export default WithRfapiService()(App);
+export default App;
