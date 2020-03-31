@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "./article-list.css";
 import ArticleListItem from "../article-list-item";
+import {connect} from "react-redux";
 
 class ArticleList extends Component {
   render() {
@@ -18,4 +19,8 @@ class ArticleList extends Component {
   }
 }
 
-export default ArticleList;
+const mapStateToProps = ({articles}) => {
+  return {articles}
+};
+
+export default connect(mapStateToProps)(ArticleList);
