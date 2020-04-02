@@ -17,13 +17,13 @@ class ArticleList extends Component {
     const {articles} = this.props;
 
     return (
-      <ul>
+      <main className="container">
         {
           articles.map((article) => {
-            return <li key={article.id}><ArticleListItem article={article}/></li>
+            return <div key={article.id}><ArticleListItem article={article}/></div>
           })
         }
-      </ul>
+      </main>
     )
   }
 }
