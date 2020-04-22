@@ -8,9 +8,8 @@ import {WithRfapiService} from "../hoc";
 class ArticleList extends Component {
   componentDidMount() {
     const {rfapiService, articlesLoaded} = this.props;
-    const articles = rfapiService.getArticles();
 
-    articlesLoaded(articles);
+    rfapiService.getArticles().then((data) => articlesLoaded(data))
   }
 
   render() {
