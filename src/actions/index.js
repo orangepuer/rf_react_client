@@ -5,4 +5,11 @@ const articlesLoaded = (articles) => {
   }
 };
 
-export {articlesLoaded};
+const articlesError = (error) => {
+  return {
+    type: 'ARTICLES_ERROR',
+    payload: error
+  }
+}
+
+export {articlesLoaded, articlesError};
