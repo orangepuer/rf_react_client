@@ -1,5 +1,6 @@
 import React from "react";
 import "./article-list-item.css";
+import {Link} from "react-router-dom";
 
 const ArticleListItem = ({article}) => {
   return (
@@ -12,12 +13,14 @@ const ArticleListItem = ({article}) => {
             {article.attributes.content}
           </p>
           <p className="article-author">
-            <a href="#"><i className="fa fa-github"></i></a>
+            <Link to="/">
+              <i className="fa fa-github"></i>
+            </Link>
             <span>Author</span>
           </p>
           <p className="article-new-comment">
             <i></i>
-            <a href="#">Leave a comment here</a>
+            <Link to="/">Leave a comment here</Link>
           </p>
         </div>
     </section>
