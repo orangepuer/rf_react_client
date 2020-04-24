@@ -8,9 +8,7 @@ import ErrorIndicator from "../error-indicator";
 
 class ArticleList extends Component {
   componentDidMount() {
-    const {rfapiService, articlesLoaded, articlesError} = this.props;
-
-    rfapiService.getArticles().then((data) => articlesLoaded(data)).catch((error) => articlesError(error))
+    this.props.fetchArticles();
   }
 
   render() {
@@ -36,9 +34,16 @@ const mapStateToProps = ({articles, error}) => {
   return {articles, error}
 };
 
-const mapDispatchToProps = {
-  articlesLoaded,
-  articlesError
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { rfapiService } = ownProps;
+
+  return {
+    fetchArticles: () => {
+      rfapiService.getArticles()
+          .then((data) => dispatch(articlesLoaded(data)))
+          .catch((error) => dispatch(articlesError(error)));
+    }
+  }
 };
 
 export default WithRfapiService()(connect(mapStateToProps, mapDispatchToProps)(ArticleList));
