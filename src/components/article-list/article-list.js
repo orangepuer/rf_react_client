@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./article-list.css";
 import ArticleListItem from "../article-list-item";
 import {connect} from "react-redux";
-import {articlesLoaded, articlesError} from "../../actions";
+import {fetchArticles} from "../../actions";
 import {WithRfapiService} from "../hoc";
 import ErrorIndicator from "../error-indicator";
 
@@ -38,11 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const { rfapiService } = ownProps;
 
   return {
-    fetchArticles: () => {
-      rfapiService.getArticles()
-          .then((data) => dispatch(articlesLoaded(data)))
-          .catch((error) => dispatch(articlesError(error)));
-    }
+    fetchArticles: fetchArticles(rfapiService, dispatch)
   }
 };
 

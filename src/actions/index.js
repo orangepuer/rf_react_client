@@ -12,4 +12,10 @@ const articlesError = (error) => {
   }
 }
 
-export {articlesLoaded, articlesError};
+const fetchArticles = (rfapiService, dispatch) => () => {
+  rfapiService.getArticles()
+      .then((data) => dispatch(articlesLoaded(data)))
+      .catch((error) => dispatch(articlesError(error)));
+}
+
+export {fetchArticles};
