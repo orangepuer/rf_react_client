@@ -1,13 +1,13 @@
 const articlesLoaded = (articles) => {
   return {
-    type: 'ARTICLES_LOADED',
+    type: 'FETCH_ARTICLES_SUCCESS',
     payload: articles
   }
 };
 
 const articlesError = (error) => {
   return {
-    type: 'ARTICLES_ERROR',
+    type: 'FETCH_ARTICLES_FAILURE',
     payload: error
   }
 }

@@ -5,13 +5,13 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ARTICLES_LOADED':
+    case 'FETCH_ARTICLES_SUCCESS':
       return {
         articles: action.payload,
         error: null
       };
 
-    case 'ARTICLES_ERROR':
+    case 'FETCH_ARTICLES_FAILURE':
       return {
         articles: [],
         error: action.payload
