@@ -6,7 +6,19 @@ import {fetchArticles} from "../../actions";
 import {WithRfapiService} from "../hoc";
 import ErrorIndicator from "../error-indicator";
 
-class ArticleList extends Component {
+const ArticleList = ({articles}) => {
+  return (
+      <main className="container">
+        {
+          articles.map((article) => {
+            return <div key={article.id}><ArticleListItem article={article}/></div>
+          })
+        }
+      </main>
+  )
+}
+
+class ArticleListContainer extends Component {
   componentDidMount() {
     this.props.fetchArticles();
   }
@@ -18,15 +30,7 @@ class ArticleList extends Component {
       return <ErrorIndicator/>
     }
 
-    return (
-      <main className="container">
-        {
-          articles.map((article) => {
-            return <div key={article.id}><ArticleListItem article={article}/></div>
-          })
-        }
-      </main>
-    )
+    return <ArticleList articles={articles} />
   }
 }
 
@@ -42,4 +46,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 };
 
-export default WithRfapiService()(connect(mapStateToProps, mapDispatchToProps)(ArticleList));
+export default WithRfapiService()(connect(mapStateToProps, mapDispatchToProps)(ArticleListContainer));
