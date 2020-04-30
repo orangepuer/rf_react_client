@@ -8,7 +8,11 @@ const ArticleListItem = ({article}) => {
       <img className="avatar" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y&s=300"
            alt="avatar"/>
         <div className="article-body">
-          <h3>{article.attributes.title}</h3>
+          <h3>
+            <Link to={`/articles/${article.id}`}>
+              {article.attributes.title}
+            </Link>
+          </h3>
           <p className="article-text">
             {article.attributes.content}
           </p>
