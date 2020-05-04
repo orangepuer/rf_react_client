@@ -1,3 +1,10 @@
+const articleLoaded = (article) => {
+  return {
+    type: 'FETCH_ARTICLE_SUCCESS',
+    payload: article
+  }
+}
+
 const articlesLoaded = (articles) => {
   return {
     type: 'FETCH_ARTICLES_SUCCESS',
@@ -18,4 +25,4 @@ const fetchArticles = (rfapiService, dispatch) => () => {
       .catch((error) => dispatch(articlesError(error)));
 }
 
-export {fetchArticles};
+export {articleLoaded, articlesError, fetchArticles};

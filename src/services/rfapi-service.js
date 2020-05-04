@@ -12,6 +12,12 @@ export default class RfapiService {
     return await res.json();
   }
 
+  getArticle = async (id) => {
+    const res = await this.getResource(`/articles/${id}`)
+
+    return res.data;
+  }
+
   getArticles = async () => {
     const res = await this.getResource(`/articles/`);
 
