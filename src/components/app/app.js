@@ -11,7 +11,10 @@ const App = () => {
       <Header/>
       <Switch>
         <Route path="/" component={ArticlesPage} exact />
-        <Route path="/articles/:id" component={Article} exact />
+        <Route path="/articles/:id" render={({match}) => {
+          const {id} = match.params;
+          return <Article articleId={id} />
+        }} exact />
       </Switch>
     </div>
   )
