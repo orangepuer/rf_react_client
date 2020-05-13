@@ -3,6 +3,8 @@ import "./article.css";
 import {articleLoaded, articlesError} from "../../actions";
 import {WithRfapiService} from "../hoc";
 import {connect} from "react-redux";
+import Spinner from "../spinner";
+import ErrorIndicator from "../error-indicator";
 
 class Article extends Component {
   componentDidMount() {
@@ -14,7 +16,15 @@ class Article extends Component {
   }
 
   render() {
-    const {article} = this.props;
+    const {article, loading, error} = this.props;
+
+    if (loading) {
+      return <Spinner />
+    }
+
+    if (error) {
+      return <ErrorIndicator />
+    }
 
     if (article) {
       return (
@@ -24,13 +34,11 @@ class Article extends Component {
         </div>
       )
     }
-
-    return <div></div>
   }
 }
 
-const mapStateToProps = ({article}) => {
-  return {article}
+const mapStateToProps = ({article, loading, error}) => {
+  return {article, loading, error}
 }
 
 const mapDispatchToProps = {
